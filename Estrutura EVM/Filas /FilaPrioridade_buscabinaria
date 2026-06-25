@@ -50,7 +50,7 @@ contract FilaPrioridade {
         return atendido;
     }
 
-// ─── A BUSCA BINÁRIA CIRÚRGICA ───────────────────────────
+//A BUSCA BINÁRIA 
     
     function buscarPorGravidade(uint8 _alvo) external view returns (bool encontrado, uint256 posicao, address cliente) {
         if (fila.length == 0) return (false, 0, address(0));
@@ -62,27 +62,24 @@ contract FilaPrioridade {
             uint256 meio = esq + (dir - esq) / 2;
 
             if (fila[meio].gravidade == _alvo) {
-                // Achou! Mas como podem ter várias pessoas com gravidade 8,
-                // precisamos recuar para pegar o PRIMEIRO da fila com essa gravidade.
                 uint256 primeiro = meio;
                 while (primeiro > 0 && fila[primeiro - 1].gravidade == _alvo) {
                     primeiro--;
                 }
+
                 return (true, primeiro, fila[primeiro].endereco);
             }
 
-            // ATENÇÃO À ORDEM: A fila é DECRESCENTE (10, 9, 8...)
             if (fila[meio].gravidade > _alvo) {
-                // Se eu achei um 9 e procuro um 8, o 8 está mais pro final (direita)
                 esq = meio + 1;
-            } else {
-                // Se eu achei um 7 e procuro um 8, o 8 está mais pro começo (esquerda)
-                if (meio == 0) break; // Previne underflow de uint256
+            } 
+            else {
+                if (meio == 0) break;
                 dir = meio - 1;
             }
         }
 
-        return (false, 0, address(0)); // Não encontrou ninguém com essa gravidade
+        return (false, 0, address(0)); 
 }
 
     function verFila() external view returns (Cliente[] memory) {
