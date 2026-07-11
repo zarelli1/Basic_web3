@@ -20,7 +20,6 @@ Bem-vindo ao laboratório aberto de Leonardo Zarelli.
 ### 📦 Módulo 1: Fundamentos da EVM (Simple Storage)
 - [x] Variáveis de Estado e Funções de Leitura/Escrita
 - [x] Tipos Complexos: Structs, Arrays e Gestão de Memória (`memory` vs `storage`)
-- [ ] Otimização e Busca Eficiente: Mapeamentos (Mappings)
 
 # 🐍 Trilha Python: Algoritmos Aplicados a Mercado
 
